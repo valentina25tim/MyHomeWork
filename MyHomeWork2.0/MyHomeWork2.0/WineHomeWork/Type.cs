@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 
 namespace MyHomeWork2._0.WineHomeWork
 {
-    internal class Type
+    public enum WineType
     {
+        Dry,
+        Semisweet,
+        Sweet,
+        Sparkling,
+        Cuvee,
+        Brut
     }
 }
