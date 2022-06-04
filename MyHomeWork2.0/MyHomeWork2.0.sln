@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHomeWork2.0", "MyHomeWork2.0\MyHomeWork2.0.csproj", "{85A5F807-49EA-435B-BDB9-0F788F74655E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHomeWork2.0", "MyHomeWork2.0\MyHomeWork2.0.csproj", "{85A5F807-49EA-435B-BDB9-0F788F74655E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle2.0", "SeaBattle2.0", "{3244DD1C-A502-4C2F-8C26-A7E6FFEED548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85A5F807-49EA-435B-BDB9-0F788F74655E} = {3244DD1C-A502-4C2F-8C26-A7E6FFEED548}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {151DC53A-C605-4327-BD63-36DBFC5FC31B}
