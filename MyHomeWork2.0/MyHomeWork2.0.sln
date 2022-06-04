@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHomeWork2.0", "MyHomeWork
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeaBattle2.0", "SeaBattle2.0", "{3244DD1C-A502-4C2F-8C26-A7E6FFEED548}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Calcul", "Calcul", "{0D768DF7-812D-47E9-82B3-567C6D6AB299}"
+	ProjectSection(SolutionItems) = preProject
+		Calcul.cs = Calcul.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
