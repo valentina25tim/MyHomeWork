@@ -28,17 +28,14 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             if (Rules.StepTeam_1[NumberPlane - 1] > Rules.StepTeam_2[NumberPlane - 1])
             {
                 $"Winner: == T_1 - {Game._team_1.ElementAt(NumberPlane-1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game._team_1.ElementAt(NumberPlane - 1).Color);
-                $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
             }
             else if (Rules.StepTeam_1[NumberPlane - 1] < Rules.StepTeam_2[NumberPlane - 1])
             {
                 $"Winner: == T_2 - {Game._team_2.ElementAt(NumberPlane - 1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game._team_2.ElementAt(NumberPlane - 1).Color);
-                $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
             }
             else if (Rules.StepTeam_1[NumberPlane - 1] == Rules.StepTeam_2[NumberPlane - 1])
             {
                 $"Winner: == 0 : 0 ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, ConsoleColor.White);
-                $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
             }
         }
 
@@ -74,6 +71,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                     {
                         WinNamePrint(positionY, sw);
                     }
+
+                    $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
                     Game.cts[NumberPlane - 1].Cancel();
                 }
                 
