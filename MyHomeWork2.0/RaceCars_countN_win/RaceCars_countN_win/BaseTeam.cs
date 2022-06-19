@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 
 namespace RaceCars_countN_win.RaceCars_countN_win
@@ -22,12 +23,25 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public ConsoleColor Color { get; init; }
 
         protected abstract void MovePrint(int positionY);
-
-        private void WinNamePrint(int positionY, Stopwatch sw)
+        protected  void WinNamePrint(int positionY, Stopwatch sw)
         {
-            $"Winner: == {NumberPlane} - {Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Color);
-            $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, Color);
+            if (Rules.StepTeam_1[NumberPlane - 1] > Rules.StepTeam_2[NumberPlane - 1])
+            {
+                $"Winner: == T_1 - {Game._team_1.ElementAt(NumberPlane-1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game._team_1.ElementAt(NumberPlane - 1).Color);
+                $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
+            }
+            else if (Rules.StepTeam_1[NumberPlane - 1] < Rules.StepTeam_2[NumberPlane - 1])
+            {
+                $"Winner: == T_2 - {Game._team_2.ElementAt(NumberPlane - 1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game._team_2.ElementAt(NumberPlane - 1).Color);
+                $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
+            }
+            else if (Rules.StepTeam_1[NumberPlane - 1] == Rules.StepTeam_2[NumberPlane - 1])
+            {
+                $"Winner: == 0 : 0 ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, ConsoleColor.White);
+                $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
+            }
         }
+
         public Task NamePrint(int posY, int posX, string nameTeam)
         {
             int positionVS = Game.lengthMaxName + Game.posTeam_Y;
@@ -56,13 +70,13 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 if ((Init.distance - Game.lengthPlane) * 2 == Rules.StepTeam_1[NumberPlane - 1] + Rules.StepTeam_2[NumberPlane - 1])
                 {
                     sw.Stop();
-
                     lock (_locker)
                     {
                         WinNamePrint(positionY, sw);
                     }
                     Game.cts[NumberPlane - 1].Cancel();
                 }
+                
                 Thread.Sleep(Speed);
             }
             return Task.CompletedTask;
