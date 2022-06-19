@@ -25,12 +25,12 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             return sb.ToString();
         }
 
-        public static void CreateTaskName(List<Task> taskName, List<Plane> team, int posName_Y, int posName_X, string teamName)
+        public static void CreateTaskName(List<Task> taskName, List<IPlane> team, int posName_Y, int posName_X, string teamName)
         {
             foreach (var plane in team)
             {
                 var _posNameY = posName_Y;
-                taskName.Add(new Task(() => plane.Name(_posNameY, posName_X, teamName)));
+                taskName.Add(new Task(() => plane.NamePrint(_posNameY, posName_X, teamName)));
                 posName_Y += 1;
             }
             taskName.ForEach(t => t.Start());

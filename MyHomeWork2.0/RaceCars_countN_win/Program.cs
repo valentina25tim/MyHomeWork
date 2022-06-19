@@ -8,8 +8,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         {
             // для кратной 2 длины мас 
 
-            Init game = new Init();
-            game.Print();
+            Init.Print();
         }
     }
 }

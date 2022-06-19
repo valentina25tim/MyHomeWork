@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace RaceCars_countN_win.RaceCars_countN_win
 {
     public interface IPlane
     {
-        public string NamePilote { get; set; }
-        public string LookPlane { get; init; }
-        public int NumberPilot { get; set; }
+        public string Name { get; set; }
+        public string Look { get; init; }
+        public int NumberPlane { get; set; }
         public char Direction { get; set; }
-        public int SpeedPlane { get; init; }
-        public ConsoleColor ColorPlane { get; init; }
-        
+        public int Speed { get; init; }
+        public ConsoleColor Color { get; init; }
+
+        Task Fly(int positionY, CancellationToken cts = default);
+        Task NamePrint(int posY, int posX, string nameTeam);
+
     }
 }

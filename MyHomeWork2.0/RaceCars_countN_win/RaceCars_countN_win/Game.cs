@@ -12,8 +12,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static CancellationTokenSource _cts = new();
         public readonly object _syncLock = new();
 
-        private static List<Plane> _team_1;
-        private static List<Plane> _team_2;
+        private static List<IPlane> _team_1;
+        private static List<IPlane> _team_2;
 
         public static string[] _name;
         private static string[] _look;
@@ -21,12 +21,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         private readonly string[] _teamName = new string[] { "TEAM 1", "TEAM 2" };
         private readonly char[] _direction = new char[] { '+', '-' };
 
-        private const int
-            minSpeed = 50,
-            maxSpeed = 200;
-
         public static int
-            distance = 30,
             lengthPlane,
             lengthMaxName,
             wayPlane,
@@ -67,7 +62,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
                 lengthPlane = Helper.GetMaxLength(_look);
                 lengthMaxName = Helper.GetMaxLength(_name);
-                wayPlane = distance + lengthPlane;
+                wayPlane = Init.distance + lengthPlane;
                 posName_X_2 = (lengthMaxName + posTeam_Y) + 6;
             }
             else
@@ -90,8 +85,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
         private void MkTeams()
         {
-            _team_1 = new List<Plane>();
-            _team_2 = new List<Plane>();
+            _team_1 = new List<IPlane>();
+            _team_2 = new List<IPlane>();
 
             int numb_1 = 1, numb_2 = 1;
 
@@ -100,19 +95,19 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 int a = i + 1;
 
                 if (a % 2 != 0)
-                    _team_1.Add(new Plane((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(minSpeed, maxSpeed), _direction[0])
+                    _team_1.Add(new Team_1((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[0])
                     {
-                        NamePilote = _name[i],
-                        LookPlane = _look[i],
-                        NumberPilot = numb_1++
+                        Name = _name[i],
+                        Look = _look[i],
+                        NumberPlane = numb_1++
                     });
 
                 if (a % 2 == 0)
-                    _team_2.Add(new Plane((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(minSpeed, maxSpeed), _direction[1])
+                    _team_2.Add(new Team_2((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[1])
                     {
-                        NamePilote = _name[i],
-                        LookPlane = _look[i],
-                        NumberPilot = numb_2++,
+                        Name = _name[i],
+                        Look = _look[i],
+                        NumberPlane = numb_2++,
                     });
             }
         }

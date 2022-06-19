@@ -6,26 +6,33 @@ using System.Threading.Tasks;
 
 namespace RaceCars_countN_win.RaceCars_countN_win
 {
-    public class Plane : IPlane
+    public abstract class BasePlane : IPlane
     {
         private static readonly object _syncLock = new();
 
-        public Plane(ConsoleColor colorPlane, int speedPlane, char direction)
+        public BasePlane(ConsoleColor colorPlane, int speedPlane, char direction)
         {
-            ColorPlane = colorPlane;
-            SpeedPlane = speedPlane;
+            Color = colorPlane;
+            Speed = speedPlane;
             Direction = direction;
         }
-        public string NamePilote { get; set; }
-        public string LookPlane { get; init; }
-        public int NumberPilot { get; set; }
+        public string Name { get; set; }
+        public string Look { get; init; }
+        public int NumberPlane { get; set; }
         public char Direction { get; set; }
-        public int SpeedPlane { get; init; }
-        public ConsoleColor ColorPlane { get; init; }
+        public int Speed { get; init; }
+        public ConsoleColor Color { get; init; }
         public int AddStep { get; set; }
 
+        protected abstract void MovePrint(int positionY);
+        private void WinNamePrint(int positionY, Stopwatch sw)
+        {
+            $"Winner: == {NumberPlane} - {Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Color);
+            $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, Color);
+        }
 
-        public Task Name(int posY, int posX, string nameTeam)
+
+        public Task NamePrint(int posY, int posX, string nameTeam)
         {
             int positionVS = Game.lengthMaxName + Game.posTeam_Y;
 
@@ -33,12 +40,13 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             {
                 nameTeam.PrintAtWihtColor(posX, 2, ConsoleColor.White);
 
-                $"{NumberPilot} - {NamePilote}".PrintAtWihtColor(posX, posY, ColorPlane);
+                $"{NumberPlane} - {Name}".PrintAtWihtColor(posX, posY, Color);
 
                 "VS".PrintAtWihtColor(positionVS, posY, ConsoleColor.White);
             }
             return Task.CompletedTask;
         }
+
         public Task Fly(int positionY, CancellationToken cts)
         {
             var sw = Stopwatch.StartNew();
@@ -51,42 +59,26 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             {
                 lock (_syncLock)
                 {
-                    if (Direction == '+')
-                    {
-                        ". ".PrintAtWihtColor(positionXLelt, positionY, ColorPlane);
-                        LookPlane.PrintAtWihtColor(positionXLelt + 2, positionY, ColorPlane);
-                    }
-                    else if (Direction == '-')
-                    {
-                        LookPlane.PrintAtWihtColor(positionXRight - Game.lengthPlane * 2, positionY, ColorPlane);
-                        " .".PrintAtWihtColor(positionXRight - Game.lengthPlane, positionY, ColorPlane);
-                    }
+                    MovePrint(positionY);
 
-                    if (positionXLelt == Game.distance - 2)
+                    if (positionXLelt == Init.distance - 2)
                     {
                         sw.Stop();
 
-                        if (NumberPilot % 2 != 0)
-                        {
-                            $"Winner: == {NumberPilot} - {NamePilote} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, ColorPlane);
-                        }
-                        else if (NumberPilot % 2 == 0)
-                        {
-                            $"Winner: == {NumberPilot} - {NamePilote} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, ColorPlane);
-                        }
-                        $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ColorPlane);
+                        WinNamePrint(positionY, sw);
+
                         Game._cts.Cancel();
                         break;
                     }
 
-                    else if (positionXLelt < Game.distance)
+                    else if (positionXLelt < Init.distance)
                     {
                         positionXLelt++;
                         positionXRight--;
                         step++;
                     }
                 }
-                Thread.Sleep(SpeedPlane);
+                Thread.Sleep(Speed);
             }
             return Task.CompletedTask;
         }

@@ -3,9 +3,14 @@
 
 namespace RaceCars_countN_win.RaceCars_countN_win
 {
-    public class Init
+    public static class Init
     {
-        public void Print()
+        public const int
+            minSpeed = 50,
+            maxSpeed = 200,
+            distance = 30;
+
+        public static void Print()
         {
             string[] Name = new[] { "Tom", "Jack", "Rick", "Billy", "Simon", "Sam", "Tom", "Jack", "Tom", "Jack", "Rick", "Billy" };
             string[] Type = new[] { "=}>", "<[+", "=)>", "<{+", "=]>", "<(+", "=}>", "<[+", "=}>", "<[+", "=)>", "<{+" };
