@@ -9,17 +9,20 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             minSpeed = 10,
             maxSpeed = 200,
             distance = 30;
+        
+        public static string[] Name = new[] { "Tom", "Jack", "Rick", "Billy", "Simon", "Sam", "Tom", "Jack", "Tom", "Jack", "Rick", "Billy" };
+        public static string[] LookP = new[] { "=}>", "<[+", "=)>", "<{+", "=]>", "<(+", "=}>", "<[+", "=}>", "<[+", "=)>", "<{+" };
 
 
         public static string[] teamName = new string[] { "TEAM 1", "TEAM 2" };
         public static void Print()
         {
-            string[] Name = new[] { "Tom", "Jack", "Rick", "Billy", "Simon", "Sam", "Tom", "Jack", "Tom", "Jack", "Rick", "Billy" };
-            string[] Type = new[] { "=}>", "<[+", "=)>", "<{+", "=]>", "<(+", "=}>", "<[+", "=}>", "<[+", "=)>", "<{+" };
+            
+            
 
             try
             {
-                new Game(Name, Type).Start();
+                new Game(Name, LookP).Start();
             }
             catch
             {

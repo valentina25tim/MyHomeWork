@@ -14,9 +14,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static List<IPlane> _team_1;
         public static List<IPlane> _team_2;
 
-        public static string[] _name;
-        private static string[] _look;
-
         private readonly char[] _direction = new char[] { '+', '-' };
 
         public static int
@@ -51,22 +48,12 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             _cts_4,
             _cts_5;
 
-
         public Game(string[] name, string[] look)
         {
-            if (name.Length == look.Length && name.Length % 2 == 0)
+            if (Init.Name.Length == Init.LookP.Length && name.Length % 2 == 0)
             {
-                _name = new string[name.Length];
-                _look = new string[name.Length];
-
-                for (var i = 0; i < name.Length; i++)
-                {
-                    _name[i] = name[i];
-                    _look[i] = look[i];
-                }
-
-                lengthPlane = Helper.GetMaxLength(_look);
-                lengthMaxName = Helper.GetMaxLength(_name);
+                lengthPlane = Helper.GetMaxLength(Init.LookP);
+                lengthMaxName = Helper.GetMaxLength(Init.Name);
                 wayPlane = Init.distance + lengthPlane;
                 posName_X_2 = (lengthMaxName + posTeam_Y) + 6;
             }
@@ -77,7 +64,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         public void Start()
         {
-
             MkTeams();
 
             PrintField();
@@ -93,28 +79,27 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
             int numb_1 = 1, numb_2 = 1;
 
-            for (var i = 0; i < _name.Length; i++)
+            for (var i = 0; i < Init.Name.Length; i++)
             {
                 int a = i + 1;
 
                 if (a % 2 != 0)
                     _team_1.Add(new Team_1((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[0])
                     {
-                        Name = _name[i],
-                        Look = _look[i],
+                        Name = Init.Name[i],
+                        Look = Init.LookP[i],
                         NumberPlane = numb_1++
                     });
 
                 if (a % 2 == 0)
                     _team_2.Add(new Team_2((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[1])
                     {
-                        Name = _name[i],
-                        Look = _look[i],
+                        Name = Init.Name[i],
+                        Look = Init.LookP[i],
                         NumberPlane = numb_2++,
                     });
             }
         }
-
         private void MkTaskName()
         {
             var taskName_1 = new List<Task>();
@@ -131,7 +116,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 .PrintAtWihtColor(0, posField_Y, ConsoleColor.White);
 
             "=".GetStrWithLength(wayPlane * 2 + 1)
-                .PrintAtWihtColor(0, posField_Y + (_look.Length) + 1, ConsoleColor.White);
+                .PrintAtWihtColor(0, posField_Y + (Init.LookP.Length) + 1, ConsoleColor.White);
 
             for (var i = 0; i < 2; i++)
                 foreach (var plane in _team_2)
@@ -147,7 +132,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                         "+".PrintAtWihtColor(wayPlane, posField_Y + 1, ConsoleColor.White);
                 }
         }
-
         private void GroupCompetition()
         {
             List<Task>[] tasks = { taskFly_0_gr, taskFly_1_gr, taskFly_2_gr, taskFly_3_gr, taskFly_4_gr, taskFly_5_gr };
