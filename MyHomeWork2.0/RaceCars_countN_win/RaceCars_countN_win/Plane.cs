@@ -8,7 +8,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 {
     public abstract class BasePlane : IPlane
     {
-        private static readonly object _syncLock = new();
+        private static readonly object _locker = new();
 
         public BasePlane(ConsoleColor colorPlane, int speedPlane, char direction)
         {
@@ -20,8 +20,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public int NumberPlane { get; set; }
         public int Speed { get; init; }
         public ConsoleColor Color { get; init; }
-        public int AddStep { get; set; }
-
+        
         protected abstract void MovePrint(int positionY);
 
         private void WinNamePrint(int positionY, Stopwatch sw)
@@ -33,7 +32,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         {
             int positionVS = Game.lengthMaxName + Game.posTeam_Y;
 
-            lock (_syncLock)
+            lock (_locker)
             {
                 nameTeam.PrintAtWihtColor(posX, 2, ConsoleColor.White);
 
@@ -50,25 +49,19 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
             while (!Game._cts.IsCancellationRequested)
             {
-                lock (_syncLock)
+                lock (_locker)
                 {
-                    if ((Init.distance - Game.lengthPlane) * 2 > Rules.StepTeam_1[NumberPlane - 1] + Rules.StepTeam_2[NumberPlane - 1])
-                    {
-                        lock (_syncLock)
-                        {
-                            MovePrint(positionY);
-                        }
-                    }
-                    if ((Init.distance - Game.lengthPlane) * 2 == Rules.StepTeam_1[NumberPlane - 1] + Rules.StepTeam_2[NumberPlane - 1])
-                    {
-                        sw.Stop();
-                        lock (_syncLock)
-                        {
-                            WinNamePrint(positionY, sw);
-                        }
+                    MovePrint(positionY);
+                }
+                if ((Init.distance - Game.lengthPlane) * 2 == Rules.StepTeam_1[NumberPlane - 1] + Rules.StepTeam_2[NumberPlane - 1])
+                {
+                    sw.Stop();
 
-                        Game._cts.Cancel();
+                    lock (_locker)
+                    {
+                        WinNamePrint(positionY, sw);
                     }
+                    Game._cts.Cancel();
                 }
                 Thread.Sleep(Speed);
             }

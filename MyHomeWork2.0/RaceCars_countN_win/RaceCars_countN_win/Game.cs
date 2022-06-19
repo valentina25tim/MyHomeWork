@@ -30,8 +30,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
         private static int
             posField_Y = 12,
-            posName_Y_1 = 4,
-            posName_Y_2 = 4,
+            posName_Y = 4,
             posName_X_1 = 1,
             posName_X_2;
 
@@ -117,8 +116,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             var taskName_1 = new List<Task>();
             var taskName_2 = new List<Task>();
 
-            Helper.CreateTaskName(taskName_1, _team_1, posName_Y_1, posName_X_1, Init.teamName[0]);
-            Helper.CreateTaskName(taskName_2, _team_2, posName_Y_2, posName_X_2, Init.teamName[1]);
+            Helper.CreateTaskName(taskName_1, _team_1, posName_Y, posName_X_1, Init.teamName[0]);
+            Helper.CreateTaskName(taskName_2, _team_2, posName_Y, posName_X_2, Init.teamName[1]);
         }
         private void PrintField()
         {
@@ -167,11 +166,9 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         private void MkTaskFly()
         {
-            for (var i = 0; i < _team_1.Count; i++)
-            {
-                Rules.StepTeam_1 = Rules.AddStepToTeam(i, 0, _team_1.Count);
-                Rules.StepTeam_2 = Rules.AddStepToTeam(i, 0, _team_1.Count);
-            }
+            Rules.StepTeam_1 = Rules.CreateEmptyAddaySteps(_team_1.Count);
+            Rules.StepTeam_2 = Rules.CreateEmptyAddaySteps(_team_1.Count);
+
             GroupCompetition();
 
             for (var i = 0; i < taskFly.Count; i++)

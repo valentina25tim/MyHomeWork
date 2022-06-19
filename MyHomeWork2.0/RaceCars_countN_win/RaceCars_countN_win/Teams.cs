@@ -17,7 +17,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             ". ".PrintAtWihtColor(positionXLelt, positionY, Color);
             Look.PrintAtWihtColor(positionXLelt + 2, positionY, Color);
 
-            Rules.StepTeam_1 = Rules.AddStepToTeam(NumberPlane - 1, step, Game._team_1.Count);
+            Rules.StepTeam_1 = Rules.AddStepToTeam(NumberPlane - 1, step, Rules.StepTeam_1);
 
             positionXLelt++;
             step++;
@@ -35,7 +35,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             Look.PrintAtWihtColor(positionXRight - Game.lengthPlane * 2, positionY, Color);
             " .".PrintAtWihtColor(positionXRight - Game.lengthPlane, positionY, Color);
 
-            Rules.StepTeam_2 = Rules.AddStepToTeam(NumberPlane - 1, step, Game._team_1.Count);
+            Rules.StepTeam_2 = Rules.AddStepToTeam(NumberPlane - 1, step, Rules.StepTeam_2);
 
             positionXRight--;
             step++;

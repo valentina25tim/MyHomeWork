@@ -16,14 +16,21 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static int CoutGamers { get; set; }
 
 
-        public static int[] AddStepToTeam(int index, int countSteps, int countGamer)
+        public static int[] CreateEmptyAddaySteps(int countGamer)
         {
-
             int[] stepList = new int[countGamer];
 
-            stepList[index] = countSteps;
-
+            for (var i = 0; i < countGamer; i++)
+            {
+                stepList[i] = 0;
+            }
             return stepList;
+        }
+        public static int[] AddStepToTeam(int index, int countSteps, int[] array)
+        {
+            array[index] = countSteps;
+
+            return array;
         }
     }
 }
