@@ -6,9 +6,10 @@ namespace RaceCars_countN_win.RaceCars_countN_win
     public static class Init
     {
         public const int
-            minSpeed = 50,
+            minSpeed = 10,
             maxSpeed = 200,
             distance = 30;
+
 
         public static string[] teamName = new string[] { "TEAM 1", "TEAM 2" };
         public static void Print()

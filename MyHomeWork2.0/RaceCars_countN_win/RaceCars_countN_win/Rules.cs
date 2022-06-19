@@ -10,7 +10,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
     {
         public static int[] StepTeam_1 { get; set; }
         public static int[] StepTeam_2 { get; set; }
-
         public static int Index { get; set; }
         public static int CountSteps { get; set; }
         public static int CoutGamers { get; set; }

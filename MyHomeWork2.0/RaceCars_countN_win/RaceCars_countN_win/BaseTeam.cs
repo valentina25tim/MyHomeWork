@@ -47,7 +47,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         {
             var sw = Stopwatch.StartNew();
 
-            while (!Game._cts.IsCancellationRequested)
+            while (!Game.cts[NumberPlane - 1].IsCancellationRequested)
             {
                 lock (_locker)
                 {
@@ -61,7 +61,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                     {
                         WinNamePrint(positionY, sw);
                     }
-                    Game._cts.Cancel();
+                    Game.cts[NumberPlane - 1].Cancel();
                 }
                 Thread.Sleep(Speed);
             }

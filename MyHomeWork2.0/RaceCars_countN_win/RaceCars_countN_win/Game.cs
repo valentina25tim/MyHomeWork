@@ -9,7 +9,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 {
     public class Game
     {
-        public static CancellationTokenSource _cts = new();
         public readonly object _syncLock = new();
 
         public static List<IPlane> _team_1;
@@ -42,6 +41,16 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             taskFly_3_gr,
             taskFly_4_gr,
             taskFly_5_gr;
+
+        public static CancellationTokenSource[] cts = { _cts_0, _cts_1, _cts_2, _cts_3, _cts_4, _cts_5 };
+        public static CancellationTokenSource
+            _cts_0,
+            _cts_1,
+            _cts_2,
+            _cts_3,
+            _cts_4,
+            _cts_5;
+
 
         public Game(string[] name, string[] look)
         {
@@ -151,9 +160,10 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 var _posPlaneY = posPlane_Y;
 
                 tasks[a] = new List<Task>();
+                cts[a] = new();
 
-                tasks[a].Add(new Task(() => _team_1.ElementAt(a).Fly(_posPlaneY, _cts.Token)));
-                tasks[a].Add(new Task(() => _team_2.ElementAt(a).Fly(_posPlaneY, _cts.Token)));
+                tasks[a].Add(new Task(() => _team_1.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
+                tasks[a].Add(new Task(() => _team_2.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
                 taskFly.Add(tasks[a]);
 
                 posPlane_Y += 2;
