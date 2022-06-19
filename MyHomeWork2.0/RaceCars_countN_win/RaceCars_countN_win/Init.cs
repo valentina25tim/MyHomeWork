@@ -18,7 +18,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         {
             try
             {
-                new Game(Name, LookP).Start();
+                new Game().Start();
             }
             catch
             {

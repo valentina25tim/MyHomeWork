@@ -48,9 +48,9 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             _cts_4,
             _cts_5;
 
-        public Game(string[] name, string[] look)
+        public Game()
         {
-            if (Init.Name.Length == Init.LookP.Length && name.Length % 2 == 0)
+            if (Init.Name.Length == Init.LookP.Length && Init.Name.Length % 2 == 0)
             {
                 lengthPlane = Helper.GetMaxLength(Init.LookP);
                 lengthMaxName = Helper.GetMaxLength(Init.Name);
