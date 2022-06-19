@@ -57,6 +57,5 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             int longerString = array[indLongerString].Length;
             return longerString;
         }
-
     }
 }

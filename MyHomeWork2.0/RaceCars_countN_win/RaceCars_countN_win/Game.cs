@@ -18,7 +18,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static string[] _name;
         private static string[] _look;
 
-
         private readonly char[] _direction = new char[] { '+', '-' };
 
         public static int
@@ -33,7 +32,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             posName_Y = 4,
             posName_X_1 = 1,
             posName_X_2;
-
 
         private List<List<Task>> taskFly;
 
@@ -68,7 +66,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 Console.WriteLine("name.Length != look.Length  &&  name.Length %2 == 0\n Init.cs -> [...]");
             }
         }
-
         public void Start()
         {
 
@@ -80,8 +77,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
             MkTaskFly();
         }
-
-
         private void MkTeams()
         {
             _team_1 = new List<IPlane>();

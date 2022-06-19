@@ -20,7 +20,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public int NumberPlane { get; set; }
         public int Speed { get; init; }
         public ConsoleColor Color { get; init; }
-        
+
         protected abstract void MovePrint(int positionY);
 
         private void WinNamePrint(int positionY, Stopwatch sw)

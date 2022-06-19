@@ -15,7 +15,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static int CountSteps { get; set; }
         public static int CoutGamers { get; set; }
 
-
         public static int[] CreateEmptyAddaySteps(int countGamer)
         {
             int[] stepList = new int[countGamer];

@@ -12,6 +12,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public int Speed { get; init; }
         public ConsoleColor Color { get; init; }
 
+
         Task Fly(int positionY, CancellationToken cts = default);
         Task NamePrint(int posY, int posX, string nameTeam);
     }

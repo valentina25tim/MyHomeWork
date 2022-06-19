@@ -11,7 +11,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             distance = 30;
 
         public static string[] teamName = new string[] { "TEAM 1", "TEAM 2" };
-
         public static void Print()
         {
             string[] Name = new[] { "Tom", "Jack", "Rick", "Billy", "Simon", "Sam", "Tom", "Jack", "Tom", "Jack", "Rick", "Billy" };
