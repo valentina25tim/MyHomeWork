@@ -12,13 +12,13 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static CancellationTokenSource _cts = new();
         public readonly object _syncLock = new();
 
-        private static List<IPlane> _team_1;
-        private static List<IPlane> _team_2;
+        public static List<IPlane> _team_1;
+        public static List<IPlane> _team_2;
 
         public static string[] _name;
         private static string[] _look;
 
-        private readonly string[] _teamName = new string[] { "TEAM 1", "TEAM 2" };
+
         private readonly char[] _direction = new char[] { '+', '-' };
 
         public static int
@@ -26,8 +26,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             lengthMaxName,
             wayPlane,
             posTeam_Y = 8,
-            posPlane_Y_1 = 13,
-            posPlane_Y_2 = 13;
+            posPlane_Y = 13;
 
         private static int
             posField_Y = 12,
@@ -73,6 +72,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
         public void Start()
         {
+
             MkTeams();
 
             PrintField();
@@ -117,8 +117,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             var taskName_1 = new List<Task>();
             var taskName_2 = new List<Task>();
 
-            Helper.CreateTaskName(taskName_1, _team_1, posName_Y_1, posName_X_1, _teamName[0]);
-            Helper.CreateTaskName(taskName_2, _team_2, posName_Y_2, posName_X_2, _teamName[1]);
+            Helper.CreateTaskName(taskName_1, _team_1, posName_Y_1, posName_X_1, Init.teamName[0]);
+            Helper.CreateTaskName(taskName_2, _team_2, posName_Y_2, posName_X_2, Init.teamName[1]);
         }
         private void PrintField()
         {
@@ -141,77 +141,43 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                     "|".PrintAtWihtColor((wayPlane * 2), posField_Y, ConsoleColor.White);
 
                     if (posField_Y % 2 != 0)
-                        "+".PrintAtWihtColor(wayPlane, posField_Y, ConsoleColor.White);
+                        "+".PrintAtWihtColor(wayPlane, posField_Y + 1, ConsoleColor.White);
                 }
         }
 
         private void GroupCompetition()
         {
-            taskFly = new List<List<Task>>(_team_1.Count);
+            List<Task>[] tasks = { taskFly_0_gr, taskFly_1_gr, taskFly_2_gr, taskFly_3_gr, taskFly_4_gr, taskFly_5_gr };
 
-            taskFly_0_gr = new List<Task>();
-            taskFly_1_gr = new List<Task>();
-            taskFly_2_gr = new List<Task>();
-            taskFly_3_gr = new List<Task>();
-            taskFly_4_gr = new List<Task>();
-            taskFly_5_gr = new List<Task>();
+            taskFly = new List<List<Task>>(_team_1.Count);
 
             for (var i = 0; i < _team_1.Count; i++)
             {
-                var _posPlaneY_1 = posPlane_Y_1;
-                var _posPlaneY_2 = posPlane_Y_2;
+                int a = i;
+                var _posPlaneY = posPlane_Y;
 
-                if (i == 0)
-                {
-                    taskFly_0_gr.Add(new Task(() => _team_1.ElementAt(0).Fly(_posPlaneY_1, _cts.Token)));
-                    taskFly_0_gr.Add(new Task(() => _team_2.ElementAt(0).Fly(_posPlaneY_2, _cts.Token)));
-                }
-                if (i == 1)
-                {
-                    taskFly_1_gr.Add(new Task(() => _team_1.ElementAt(1).Fly(_posPlaneY_1, _cts.Token)));
-                    taskFly_1_gr.Add(new Task(() => _team_2.ElementAt(1).Fly(_posPlaneY_2, _cts.Token)));
-                }
-                if (i == 2)
-                {
-                    taskFly_2_gr.Add(new Task(() => _team_1.ElementAt(2).Fly(_posPlaneY_1, _cts.Token)));
-                    taskFly_2_gr.Add(new Task(() => _team_2.ElementAt(2).Fly(_posPlaneY_2, _cts.Token)));
-                }
-                if (i == 3)
-                {
-                    taskFly_3_gr.Add(new Task(() => _team_1.ElementAt(3).Fly(_posPlaneY_1, _cts.Token)));
-                    taskFly_3_gr.Add(new Task(() => _team_2.ElementAt(3).Fly(_posPlaneY_2, _cts.Token)));
-                }
-                if (i == 4)
-                {
-                    taskFly_4_gr.Add(new Task(() => _team_1.ElementAt(4).Fly(_posPlaneY_1, _cts.Token)));
-                    taskFly_4_gr.Add(new Task(() => _team_2.ElementAt(4).Fly(_posPlaneY_2, _cts.Token)));
-                }
-                if (i == 5)
-                {
-                    taskFly_5_gr.Add(new Task(() => _team_1.ElementAt(5).Fly(_posPlaneY_1, _cts.Token)));
-                    taskFly_5_gr.Add(new Task(() => _team_2.ElementAt(5).Fly(_posPlaneY_2, _cts.Token)));
-                }
+                tasks[a] = new List<Task>();
 
-                posPlane_Y_1 += 2;
-                posPlane_Y_2 += 2;
+                tasks[a].Add(new Task(() => _team_1.ElementAt(a).Fly(_posPlaneY, _cts.Token)));
+                tasks[a].Add(new Task(() => _team_2.ElementAt(a).Fly(_posPlaneY, _cts.Token)));
+                taskFly.Add(tasks[a]);
+
+                posPlane_Y += 2;
             }
-            taskFly.Add(taskFly_0_gr);
-            taskFly.Add(taskFly_1_gr);
-            taskFly.Add(taskFly_2_gr);
-            taskFly.Add(taskFly_3_gr);
-            taskFly.Add(taskFly_4_gr);
-            taskFly.Add(taskFly_5_gr);
         }
         private void MkTaskFly()
         {
+            for (var i = 0; i < _team_1.Count; i++)
+            {
+                Rules.StepTeam_1 = Rules.AddStepToTeam(i, 0, _team_1.Count);
+                Rules.StepTeam_2 = Rules.AddStepToTeam(i, 0, _team_1.Count);
+            }
             GroupCompetition();
 
             for (var i = 0; i < taskFly.Count; i++)
             {
                 taskFly.ElementAt(i).ForEach(t => t.Start());
-
             }
         }
-
     }
 }

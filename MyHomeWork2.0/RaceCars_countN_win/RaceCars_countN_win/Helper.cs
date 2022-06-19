@@ -36,6 +36,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             taskName.ForEach(t => t.Start());
             Task.WaitAll(taskName.ToArray());
         }
+
         public static int GetRandomBetween(int min, int max)
         {
             return new Random().Next(min, max);

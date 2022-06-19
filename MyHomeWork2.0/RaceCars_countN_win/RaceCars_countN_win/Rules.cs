@@ -8,16 +8,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 {
     public static class Rules
     {
-        public static int[]
-            AddStepTeam_1,
-            AddStepTeam_2;
-
-
-        static Rules()
-        {
-            AddStepTeam_1 = AddStepToTeam(Index, CountSteps, CoutGamers);
-            AddStepTeam_2 = AddStepToTeam(Index, CountSteps, CoutGamers);
-        }
+        public static int[] StepTeam_1 { get; set; }
+        public static int[] StepTeam_2 { get; set; }
 
         public static int Index { get; set; }
         public static int CountSteps { get; set; }
@@ -26,15 +18,12 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
         public static int[] AddStepToTeam(int index, int countSteps, int countGamer)
         {
-            int[] stepArray = new int[countGamer];
 
-            for (var i = 0; i < countGamer; i++)
-                stepArray[i] = 0;
+            int[] stepList = new int[countGamer];
 
-            stepArray[index] = countSteps;
+            stepList[index] = countSteps;
 
-            return stepArray;
+            return stepList;
         }
-
     }
 }
