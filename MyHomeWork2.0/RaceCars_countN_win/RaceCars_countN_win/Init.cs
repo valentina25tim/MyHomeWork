@@ -12,14 +12,10 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         
         public static string[] Name = new[] { "Tom", "Jack", "Rick", "Billy", "Simon", "Sam", "Tom", "Jack", "Tom", "Jack", "Rick", "Billy" };
         public static string[] LookP = new[] { "=}>", "<[+", "=)>", "<{+", "=]>", "<(+", "=}>", "<[+", "=}>", "<[+", "=)>", "<{+" };
-
-
         public static string[] teamName = new string[] { "TEAM 1", "TEAM 2" };
+
         public static void Print()
         {
-            
-            
-
             try
             {
                 new Game(Name, LookP).Start();
