@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RaceCars_countN_win.RaceCars_countN_win
 {
@@ -19,11 +15,11 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             Look.PrintAtWihtColor(positionXLelt + 2, positionY, Color);
 
             Rules.StepTeam_1 = Rules.AddStepToTeam(NumberPlane - 1, step, Rules.StepTeam_1);
+
             positionXLelt++;
             step++;
         }
     }
-
     sealed class Team_2 : BasePlane
     {
         public Team_2(ConsoleColor colorPlane, int speedPlane, char direction) : base(colorPlane, speedPlane, direction) { }
@@ -36,6 +32,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             " .".PrintAtWihtColor(positionXRight - Game.lengthPlane, positionY, Color);
 
             Rules.StepTeam_2 = Rules.AddStepToTeam(NumberPlane - 1, step, Rules.StepTeam_2);
+
             positionXRight--;
             step++;
         }

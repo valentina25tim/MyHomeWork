@@ -9,8 +9,6 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 {
     public abstract class BasePlane : IPlane
     {
-        private static readonly object _locker = new();
-
         public BasePlane(ConsoleColor colorPlane, int speedPlane, char direction)
         {
             Color = colorPlane;
@@ -23,15 +21,16 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public ConsoleColor Color { get; init; }
 
         protected abstract void MovePrint(int positionY);
-        protected  void WinNamePrint(int positionY, Stopwatch sw)
+
+        private  void WinNamePrint(int positionY, Stopwatch sw)
         {
             if (Rules.StepTeam_1[NumberPlane - 1] > Rules.StepTeam_2[NumberPlane - 1])
             {
-                $"Winner: == T_1 - {Game._team_1.ElementAt(NumberPlane-1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game._team_1.ElementAt(NumberPlane - 1).Color);
+                $"Winner: == T_1 - {Game.Team_1.ElementAt(NumberPlane-1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game.Team_1.ElementAt(NumberPlane - 1).Color);
             }
             else if (Rules.StepTeam_1[NumberPlane - 1] < Rules.StepTeam_2[NumberPlane - 1])
             {
-                $"Winner: == T_2 - {Game._team_2.ElementAt(NumberPlane - 1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game._team_2.ElementAt(NumberPlane - 1).Color);
+                $"Winner: == T_2 - {Game.Team_2.ElementAt(NumberPlane - 1).Name} ==".PrintAtWihtColor(Game.wayPlane * 2 + 4, positionY, Game.Team_2.ElementAt(NumberPlane - 1).Color);
             }
             else if (Rules.StepTeam_1[NumberPlane - 1] == Rules.StepTeam_2[NumberPlane - 1])
             {
@@ -43,7 +42,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         {
             int positionVS = Game.lengthMaxName + Game.posTeam_Y;
 
-            lock (_locker)
+            lock (Game.locker)
             {
                 nameTeam.PrintAtWihtColor(posX, 2, ConsoleColor.White);
 
@@ -60,14 +59,14 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
             while (!Game.cts[NumberPlane - 1].IsCancellationRequested)
             {
-                lock (_locker)
+                lock (Game.locker)
                 {
                     MovePrint(positionY);
                 }
                 if ((Init.distance - Game.lengthPlane) * 2 == Rules.StepTeam_1[NumberPlane - 1] + Rules.StepTeam_2[NumberPlane - 1])
                 {
                     sw.Stop();
-                    lock (_locker)
+                    lock (Game.locker)
                     {
                         WinNamePrint(positionY, sw);
                     }

@@ -6,7 +6,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
     {
         static void Main(string[] args)
         {
-            // для кратной 2 длины мас 
+            // team - 2, gr - 6
 
             Init.Print();
         }

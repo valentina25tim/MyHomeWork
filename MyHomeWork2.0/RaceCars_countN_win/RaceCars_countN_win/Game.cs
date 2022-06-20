@@ -9,16 +9,17 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 {
     public class Game
     {
-        public readonly object _syncLock = new();
+        public static readonly object locker = new();
 
-        public static List<IPlane> _team_1;
-        public static List<IPlane> _team_2;
+        public static List<IPlane> Team_1;
+        public static List<IPlane> Team_2;
 
         public static CancellationTokenSource[] cts = { _cts, _cts, _cts, _cts, _cts, _cts };
-        public static CancellationTokenSource _cts;
+        private static CancellationTokenSource _cts;
 
         private List<List<Task>> taskFly;
-        private List<Task> taskFly_gr;
+        private static List<Task>[] tasks = { taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr };
+        private static List<Task> taskFly_gr;
 
         private readonly char[] _direction = new char[] { '+', '-' };
 
@@ -61,8 +62,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         private void MkTeams()
         {
-            _team_1 = new List<IPlane>();
-            _team_2 = new List<IPlane>();
+            Team_1 = new List<IPlane>();
+            Team_2 = new List<IPlane>();
 
             int numb_1 = 1, numb_2 = 1;
 
@@ -71,7 +72,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 int a = i + 1;
 
                 if (a % 2 != 0)
-                    _team_1.Add(new Team_1((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[0])
+                    Team_1.Add(new Team_1((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[0])
                     {
                         Name = Init.Name[i],
                         Look = Init.LookP[i],
@@ -79,7 +80,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                     });
 
                 if (a % 2 == 0)
-                    _team_2.Add(new Team_2((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[1])
+                    Team_2.Add(new Team_2((ConsoleColor)Helper.GetRandomBetween(1, 15), Helper.GetRandomBetween(Init.minSpeed, Init.maxSpeed), _direction[1])
                     {
                         Name = Init.Name[i],
                         Look = Init.LookP[i],
@@ -92,8 +93,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             var taskName_1 = new List<Task>();
             var taskName_2 = new List<Task>();
 
-            Helper.CreateTaskName(taskName_1, _team_1, posName_Y, posName_X_1, Init.teamName[0]);
-            Helper.CreateTaskName(taskName_2, _team_2, posName_Y, posName_X_2, Init.teamName[1]);
+            Helper.CreateTaskName(taskName_1, Team_1, posName_Y, posName_X_1, Init.teamName[0]);
+            Helper.CreateTaskName(taskName_2, Team_2, posName_Y, posName_X_2, Init.teamName[1]);
         }
         private void PrintField()
         {
@@ -106,7 +107,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 .PrintAtWihtColor(0, posField_Y + (Init.LookP.Length) + 1, ConsoleColor.White);
 
             for (var i = 0; i < 2; i++)
-                foreach (var plane in _team_2)
+                foreach (var plane in Team_2)
                 {
                     var _posPlaneY = posField_Y;
 
@@ -121,11 +122,9 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         private void GroupCompetition()
         {
-            List<Task>[] tasks = { taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr };
+            taskFly = new List<List<Task>>(Team_1.Count);
 
-            taskFly = new List<List<Task>>(_team_1.Count);
-
-            for (var i = 0; i < _team_1.Count; i++)
+            for (var i = 0; i < Team_1.Count; i++)
             {
                 int a = i;
                 var _posPlaneY = posPlane_Y;
@@ -133,8 +132,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                 tasks[a] = new List<Task>();
                 cts[a] = new();
 
-                tasks[a].Add(new Task(() => _team_1.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
-                tasks[a].Add(new Task(() => _team_2.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
+                tasks[a].Add(new Task(() => Team_1.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
+                tasks[a].Add(new Task(() => Team_2.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
                 taskFly.Add(tasks[a]);
 
                 posPlane_Y += 2;
@@ -142,8 +141,8 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         private void MkTaskFly()
         {
-            Rules.StepTeam_1 = Rules.CreateEmptyAddaySteps(_team_1.Count);
-            Rules.StepTeam_2 = Rules.CreateEmptyAddaySteps(_team_1.Count);
+            Rules.StepTeam_1 = Rules.CreateEmptyAddaySteps(Team_1.Count);
+            Rules.StepTeam_2 = Rules.CreateEmptyAddaySteps(Team_1.Count);
 
             GroupCompetition();
 
