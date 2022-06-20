@@ -39,15 +39,9 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             taskFly_4_gr,
             taskFly_5_gr;
 
-        public static CancellationTokenSource[] cts = { _cts_0, _cts_1, _cts_2, _cts_3, _cts_4, _cts_5 };
-        public static CancellationTokenSource
-            _cts_0,
-            _cts_1,
-            _cts_2,
-            _cts_3,
-            _cts_4,
-            _cts_5;
-
+        public static CancellationTokenSource[] cts = { _cts, _cts, _cts, _cts, _cts, _cts };
+        public static CancellationTokenSource  _cts;
+           
         public Game()
         {
             if (Init.Name.Length == Init.LookP.Length && Init.Name.Length % 2 == 0)
