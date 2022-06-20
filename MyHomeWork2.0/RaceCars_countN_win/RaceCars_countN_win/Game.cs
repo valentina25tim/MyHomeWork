@@ -14,6 +14,12 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static List<IPlane> _team_1;
         public static List<IPlane> _team_2;
 
+        public static CancellationTokenSource[] cts = { _cts, _cts, _cts, _cts, _cts, _cts };
+        public static CancellationTokenSource _cts;
+
+        private List<List<Task>> taskFly;
+        private List<Task> taskFly_gr;
+
         private readonly char[] _direction = new char[] { '+', '-' };
 
         public static int
@@ -28,20 +34,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             posName_Y = 4,
             posName_X_1 = 1,
             posName_X_2;
-
-        private List<List<Task>> taskFly;
-
-        private List<Task>
-            taskFly_0_gr,
-            taskFly_1_gr,
-            taskFly_2_gr,
-            taskFly_3_gr,
-            taskFly_4_gr,
-            taskFly_5_gr;
-
-        public static CancellationTokenSource[] cts = { _cts, _cts, _cts, _cts, _cts, _cts };
-        public static CancellationTokenSource  _cts;
-           
+       
         public Game()
         {
             if (Init.Name.Length == Init.LookP.Length && Init.Name.Length % 2 == 0)
@@ -128,7 +121,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         private void GroupCompetition()
         {
-            List<Task>[] tasks = { taskFly_0_gr, taskFly_1_gr, taskFly_2_gr, taskFly_3_gr, taskFly_4_gr, taskFly_5_gr };
+            List<Task>[] tasks = { taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr };
 
             taskFly = new List<List<Task>>(_team_1.Count);
 
