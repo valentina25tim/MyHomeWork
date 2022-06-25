@@ -53,7 +53,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             return Task.CompletedTask;
         }
 
-        public Task Fly(int positionY, CancellationToken cts)
+        public async Task Fly(int positionY, CancellationToken cts)
         {
             var sw = Stopwatch.StartNew();
 
@@ -74,10 +74,10 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                     $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
                     Game.cts[NumberPlane - 1].Cancel();
                 }
-                
-                Thread.Sleep(Speed);
+
+                await Task.Delay(Speed);
             }
-            return Task.CompletedTask;
+           
         }
     }
 }
