@@ -14,12 +14,11 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static List<IPlane> Team_1;
         public static List<IPlane> Team_2;
 
-        public static CancellationTokenSource[] cts = { _cts, _cts, _cts, _cts, _cts, _cts };
+        public static List<CancellationTokenSource> cts;
         private static CancellationTokenSource _cts;
 
-        private List<List<Task>> taskFly;
-        private static List<Task>[] tasks = { taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr, taskFly_gr };
-        private static List<Task> taskFly_gr;
+        private List<List<Task>> _taskFly;        
+        private static List<Task> _taskFly_gr;
 
         private readonly char[] _direction = new char[] { '+', '-' };
 
@@ -122,19 +121,22 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         }
         private void GroupCompetition()
         {
-            taskFly = new List<List<Task>>(Team_1.Count);
+            _taskFly = new List<List<Task>>(Team_1.Count);
+            cts = new List<CancellationTokenSource>(_taskFly.Count);
 
             for (var i = 0; i < Team_1.Count; i++)
             {
                 int a = i;
                 var _posPlaneY = posPlane_Y;
 
-                tasks[a] = new List<Task>();
-                cts[a] = new();
+                _cts = new();
+                _taskFly_gr = new List<Task>();
+                
+                cts.Add(_cts);
 
-                tasks[a].Add(new Task(() => Team_1.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
-                tasks[a].Add(new Task(() => Team_2.ElementAt(a).Fly(_posPlaneY, cts[a].Token)));
-                taskFly.Add(tasks[a]);
+                _taskFly_gr.Add(new Task(() => Team_1.ElementAt(a).Fly(_posPlaneY, cts.ElementAt(a).Token)));
+                _taskFly_gr.Add(new Task(() => Team_2.ElementAt(a).Fly(_posPlaneY, cts.ElementAt(a).Token)));
+                _taskFly.Add(_taskFly_gr);
 
                 posPlane_Y += 2;
             }
@@ -146,9 +148,9 @@ namespace RaceCars_countN_win.RaceCars_countN_win
 
             GroupCompetition();
 
-            for (var i = 0; i < taskFly.Count; i++)
+            for (var i = 0; i < _taskFly.Count; i++)
             {
-                taskFly.ElementAt(i).ForEach(t => t.Start());
+                _taskFly.ElementAt(i).ForEach(t => t.Start());
             }
         }
     }
