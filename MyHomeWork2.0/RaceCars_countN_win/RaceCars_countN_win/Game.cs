@@ -15,10 +15,10 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         public static List<IPlane> Team_2;
 
         public static List<CancellationTokenSource> cts;
-        private static CancellationTokenSource _cts;
+        private CancellationTokenSource _cts;
 
         private List<List<Task>> _taskFly;        
-        private static List<Task> _taskFly_gr;
+        private List<Task> _taskFly_gr;
 
         private readonly char[] _direction = new char[] { '+', '-' };
 
@@ -29,7 +29,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
             posTeam_Y = 8,
             posPlane_Y = 13;
 
-        private static int
+        private int
             posField_Y = 12,
             posName_Y = 4,
             posName_X_1 = 1,
