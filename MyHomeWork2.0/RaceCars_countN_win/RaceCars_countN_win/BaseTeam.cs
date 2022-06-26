@@ -57,7 +57,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
         {
             var sw = Stopwatch.StartNew();
 
-            while (!Game.cts[NumberPlane - 1].IsCancellationRequested)
+            while (!Game.cts.ElementAt(NumberPlane - 1).IsCancellationRequested)
             {
                 lock (Game.locker)
                 {
@@ -72,7 +72,7 @@ namespace RaceCars_countN_win.RaceCars_countN_win
                     }
 
                     $"Time: {((sw.Elapsed.TotalSeconds))} sec.".PrintAtWihtColor((Game.wayPlane + Game.lengthMaxName * 2) * 2 + 10, positionY, ConsoleColor.White);
-                    Game.cts[NumberPlane - 1].Cancel();
+                    Game.cts.ElementAt(NumberPlane - 1).Cancel();
                 }
 
                 await Task.Delay(Speed);
