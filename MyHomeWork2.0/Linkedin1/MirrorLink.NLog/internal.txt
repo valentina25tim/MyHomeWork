@@ -1,0 +1,80 @@
+2022-07-23 21:29:05.4375 Info Message Template Auto Format enabled
+2022-07-23 21:29:05.5358 Info Adding target FileTarget(Name=allFile)
+2022-07-23 21:29:05.5358 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 21:29:05.5358 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 21:29:05.5886 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 21:29:07.4951 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 21:34:09.7627 Info Message Template Auto Format enabled
+2022-07-23 21:34:09.8154 Info Adding target FileTarget(Name=allFile)
+2022-07-23 21:34:09.8154 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 21:34:09.8154 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 21:34:09.8415 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 21:34:10.2448 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 21:41:21.0699 Info Message Template Auto Format enabled
+2022-07-23 21:41:21.1201 Info Adding target FileTarget(Name=allFile)
+2022-07-23 21:41:21.1214 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 21:41:21.1214 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 21:41:21.1446 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 21:41:21.5337 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:10:41.4126 Info Message Template Auto Format enabled
+2022-07-23 22:10:41.4638 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:10:41.4638 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:10:41.4654 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:10:41.4902 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:10:41.8946 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:13:52.2508 Info Message Template Auto Format enabled
+2022-07-23 22:13:52.3050 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:13:52.3050 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:13:52.3050 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:13:52.3311 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:13:52.7911 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:14:56.6914 Info Message Template Auto Format enabled
+2022-07-23 22:14:56.7252 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:14:56.7252 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:14:56.7252 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:14:56.7385 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\NLog.config
+2022-07-23 22:17:04.7405 Info Message Template Auto Format enabled
+2022-07-23 22:17:04.7753 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:17:04.7753 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:17:04.7753 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:17:04.7901 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\NLog.config
+2022-07-23 22:19:53.7638 Info Message Template Auto Format enabled
+2022-07-23 22:19:53.7980 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:19:53.7980 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:19:53.7980 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:19:53.8125 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\NLog.config
+2022-07-23 22:20:46.4805 Info Message Template Auto Format enabled
+2022-07-23 22:20:46.5286 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:20:46.5286 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:20:46.5286 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:20:46.5555 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:20:46.9485 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:26:00.9620 Info Message Template Auto Format enabled
+2022-07-23 22:26:00.9967 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:26:00.9967 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:26:00.9967 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:26:00.9967 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\NLog.config
+2022-07-23 22:28:42.5876 Info Message Template Auto Format enabled
+2022-07-23 22:28:42.6374 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:28:42.6374 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:28:42.6374 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:28:42.6634 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:28:43.0908 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:29:31.7586 Info Message Template Auto Format enabled
+2022-07-23 22:29:31.8129 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:29:31.8129 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:29:31.8129 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:29:31.8397 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:29:32.3011 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:41:37.5595 Info Message Template Auto Format enabled
+2022-07-23 22:41:37.6142 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:41:37.6142 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:41:37.6142 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:41:37.6401 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:41:38.0969 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:46:41.7329 Info Message Template Auto Format enabled
+2022-07-23 22:46:41.7822 Info Adding target FileTarget(Name=allFile)
+2022-07-23 22:46:41.7822 Info Adding target FileTarget(Name=ownFile)
+2022-07-23 22:46:41.7822 Info Adding target ConsoleTarget(Name=logConsole)
+2022-07-23 22:46:41.8064 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
+2022-07-23 22:46:42.3364 Info Validating config: TargetNames=allFile, ownFile, logConsole, ConfigItems=47, FilePath=C:\C#project\MyHomeWork\MyHomeWork\MyHomeWork2.0\Linkedin1\MirrorLink.Api\bin\Debug\netcoreapp3.1\NLog.config
