@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using MirrorLink.Application.Features.Person.Queries.GetPersonDetailQuery;
 using MirrorLink.Application.Features.Person.Models;
+using MirrorLink.Application.Features.Person.Queries.PostPerson;
+using MirrorLink.Application.Features.Person.Commands.UpdatePerson;
 
 namespace MirrorLink.Api.Controllers
 {
@@ -74,6 +76,28 @@ namespace MirrorLink.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Caught");
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<PersonModel>>> PostPerson([FromBody]PersonModel person)
+        {
+            _logger.LogInformation("Requested a Person API");
+            // need toDo Validation and current Id
+            try
+            {
+                var response = await _mediator.Send(new PostPersonListQuery(person));
+
+                _logger.LogInformation("Request 'Ok'");
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Caught - PersonController");
 
                 return BadRequest(ex.Message);
             }

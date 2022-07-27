@@ -7,10 +7,10 @@ using MirrorLink.Application.Contracts.Persistence;
 using MirrorLink.Application.Features.Person.Models;
 using MirrorLink.Application.Features.Person.Queries.GetPersonList;
 
-namespace MirrorLink.Application.Features.Person.Queries.GetPersonDetail
+namespace MirrorLink.Application.Features.Person.Queries.GetPersonDetailQuery
 {
 
-    public class GetPersonIDListQueryHandler : IRequestHandler<GetPersonListQuery, List<PersonModel>>
+    public class GetPersonIDListQueryHandler : IRequestHandler<GetPersonDetailQuery, PersonModel>
     {
         private readonly IAsyncRepository<Domain.Entities.Person> _repository;
         private readonly IMapper _mapper;
@@ -20,11 +20,11 @@ namespace MirrorLink.Application.Features.Person.Queries.GetPersonDetail
             _repository = repository;
             _mapper = mapper;
         }
-
-        public async Task<List<PersonModel>> Handle(GetPersonListQuery request, CancellationToken cancellationToken)
+        public async Task<PersonModel> Handle(GetPersonDetailQuery request, CancellationToken cancellationToken)
         {
-            var persons = await _repository.ListAllAsync(cancellationToken);
-            return _mapper.Map<List<PersonModel>>(persons);
+            var person = await _repository.GetByIdAsync(request.Id, cancellationToken);
+            return _mapper.Map <PersonModel> (person);
         }
+        
     }
 }

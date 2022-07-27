@@ -16,20 +16,21 @@ namespace MirrorLink.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
+        public async Task<IReadOnlyList<T>> ListAllAsync(CancellationToken ct)
+        {
+            return await _dbContext.Set<T>().ToListAsync(ct);
+        }
 
         public virtual async Task<T> GetByIdAsync(int id, CancellationToken ct)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public async Task<IReadOnlyList<T>> ListAllAsync(CancellationToken ct)
+        public async Task<T> AddAsync(T entity, CancellationToken ct)
         {
-            return await _dbContext.Set<T>().ToListAsync(ct);
-        }
-
-        public Task<T> AddAsync(T entity, CancellationToken ct)
-        {
-            throw new NotImplementedException();
+            await _dbContext.Set<T>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync(ct);
+            return entity;
         }
 
         public Task UpdateAsync(T entity, CancellationToken ct)
@@ -37,10 +38,16 @@ namespace MirrorLink.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(T entity, CancellationToken ct)
+        public async Task DeleteAsync(T entity, CancellationToken ct)
+        {
+            _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync(ct);
+        }
+        public Task GetAsync(Func<object, bool> value)
         {
             throw new NotImplementedException();
-        }                                                       
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed)
@@ -51,16 +58,12 @@ namespace MirrorLink.Persistence.Repositories
 
             _disposed = true;
         }
-
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        public Task GetAsync(Func<object, bool> value)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
