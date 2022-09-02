@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220714182236_InitialMigration1.cs" />
+    <Compile Remove="Migrations\20220714182236_InitialMigration1.Designer.cs" />
+    <Compile Remove="Migrations\20220714182710_InitialMigration.cs" />
+    <Compile Remove="Migrations\20220714182710_InitialMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LinkedIn\MirrorLink.Application\MirrorLink.Application.csproj" />
+    <ProjectReference Include="..\LinkedIn\MirrorLink.Business\MirrorLink.Domain.csproj" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>

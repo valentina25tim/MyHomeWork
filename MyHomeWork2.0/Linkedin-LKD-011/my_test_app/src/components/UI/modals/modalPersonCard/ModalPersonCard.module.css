@@ -1,0 +1,26 @@
+.mpc__modal{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    position: relative;
+    background: rgba(0,0,0,0);
+}
+.mpc__content{
+    background:white; 
+    border-radius: 15px;
+    width: 60%;
+    height: 500px;
+    position: absolute;
+    display: flex;
+    top: -180px;
+    left: 20%;
+    z-index:5;
+}
+.mpc__active{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
