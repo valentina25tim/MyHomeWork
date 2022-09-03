@@ -5,14 +5,18 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MirrorLink.Api.Filters;
+using MirrorLink.Api.Middleware;
 
 namespace WebApplication1
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -21,7 +25,8 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(
+                config => config.Filters.Add(new CustomExceptionFilterAttribute(_env)));
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -34,6 +39,7 @@ namespace WebApplication1
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCustomLogger();
+            app.UseMiddleware<LoggingMiddleware>(); // creating Logs\internal.txt
 
             if (env.IsDevelopment())
             {

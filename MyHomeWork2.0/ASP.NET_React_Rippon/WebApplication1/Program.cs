@@ -20,7 +20,6 @@ namespace WebApplication1
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //webBuilder.UseContentRoot("some-path");
                     webBuilder.UseStartup<Startup>();
                 });
     }
